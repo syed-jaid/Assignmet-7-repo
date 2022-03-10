@@ -5,6 +5,7 @@ const reportedPostsId = [];
 
 const getLikedPosts = () => {
   return posts.filter((post) => likedPostsId.includes(post.id));
+  ;
 };
 
 const getReportedPosts = () => {
@@ -27,7 +28,7 @@ const reportPost = (id) => {
 };
 
 const displayContent = (text) => {
-  return text.length < 30 ? 'text' : text.slice(0, 30) + "<span class='fw-bold'>... read more</span>";
+  return text.length < 30 ? text : text.slice(0, 30) + "<span class='fw-bold'>... read more</span>";
 };
 
 const switchTab = (id) => {
@@ -52,7 +53,6 @@ const switchTab = (id) => {
 
 const createPost = (post) => {
   const image = post.image;
-  console.log(post);
   const div = document.createElement("article");
   div.classList.add("post");
   div.innerHTML = `
@@ -144,6 +144,7 @@ const showPosts = (posts) => {
 
 const displayLikedPosts = () => {
   const likedPosts = getLikedPosts();
+  // console.log(likedPosts[0].id);
   likedPosts.forEach((post) => {
     const div = createPost(post);
     document.getElementById("liked").appendChild(div);
@@ -156,6 +157,7 @@ const displayReportedPosts = () => {
     const div = createPost(post);
     document.getElementById("reported").appendChild(div);
   });
+
 };
 
 const loadPosts = async () => {
